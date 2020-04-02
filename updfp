@@ -1,0 +1,13 @@
+#!/bin/sh
+fp_path="$HOME/.var/app/"
+fp_scripts="$HOME/.local/bin/flatpaks"
+
+[ ! -d "fp_scripts" ] && mkdir -p "$fp_scripts"
+
+apps=$(find "$fp_path" -maxdepth 1 ! -path "$fp_path" -printf '%f\n')
+
+for app in $apps; do
+    appname=$(echo "$app" | awk -F'.' '{print tolower($3)}')
+    printf "#!/bin/sh\\nflatpak run %s" "$app" > "$HOME/.local/bin/flatpaks/$appname"
+    chmod u+x "$HOME/.local/bin/flatpaks/$appname"
+done
