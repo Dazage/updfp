@@ -1,6 +1,6 @@
 #!/bin/sh
 fp_path="/var/lib/flatpak/exports/bin/"
-fp_scripts="$HOME/.local/bin/flatpaks"
+fp_scripts="$HOME/.local/bin/flatpaks/"
 
 [ ! -d "fp_scripts" ] && mkdir -p "$fp_scripts"
 
